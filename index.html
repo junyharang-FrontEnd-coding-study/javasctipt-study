@@ -94,11 +94,11 @@
 
             for(let i = 0; i < city.length; i++) {
                 if(i == 0) {
-                    $('#city').append('<option value="' + city[i].code + '" selected>' + city[i].name + '</option>');
+                   $('#city').append('<option value="' + city[i].code + '" selected>' + city[i].name + '</option>');
                 } else {
-                    $('#city').append('<option value="' + city[i].code + '" selected>' + city[i].name + '</option>');
-                } // for문 끝
-            }
+                    $('#city').append('<option value="' + city[i].code + '">' + city[i].name + '</option>');
+                } // if-else 끝
+            } // for문 끝
 
         } // loadCity() 끝
 
