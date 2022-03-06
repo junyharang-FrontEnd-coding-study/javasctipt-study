@@ -15,9 +15,23 @@
         </div>
         
         <div>
-            지역 : <select id="city">
-                <option value="02">서울</option>
+            지역 : 
+            <select id="city" onchange="changeCity();">
+                <option value="02" selected>서울</option>
                 <option value="032">인천</option>
+            </select>
+        </div>
+
+        <div>
+            동네 : 
+            <select name="" id="region_02">
+                <option value="">강남</option>
+                <option value="">서초</option>
+            </select>
+
+            <select name="" id="region_032" style="display:none;">
+                <option value="">부평</option>
+                <option value="">계양</option>
             </select>
         </div>
 
@@ -42,11 +56,28 @@
     <script>
         function regist() {
             // 이용자가 입력한 이름 가져오기
-            alert(document.getElementById("name").value);
+            // alert(document.getElementById("name").value);
 
             // 이용자가 선택한 도시 정보 가져오기
-            alert(document.getElementById("city").value);
+            // alert(document.getElementById("city").value);
+
+            // Jqeury 문법
+            alert($("#name").val());
+            alert($("#city").val());
         } //  function regist() 끝
+
+        function changeCity() {
+
+            // city ID를 가진 Element 값을 city 변수에 넣는다.
+            let city = document.getElementById("city").value;
+
+            // 기본 상태는 두 지역구 모두 표시 되지 않게 한다.
+            document.getElementById("region_02").style.display = "none";
+            document.getElementById("region_032").style.display = "none";
+
+            // 어떤 도시가 선택되면 해당 지역구만 표시되게 한다.
+            document.getElementById("region_"+city).style.display = "";
+        } // function changeCity() 끝
     </script>
 </body>
 </html>
