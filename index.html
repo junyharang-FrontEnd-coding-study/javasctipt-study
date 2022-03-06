@@ -89,12 +89,18 @@
                         {
                             code:"032", 
                             name:"인천"
+                        },
+                        {
+                            code:"04",
+                            name:"부산"
                         }
             ];       // 배열은 [] 사용
 
             for(let i = 0; i < city.length; i++) {
                 if(i == 0) {
                    $('#city').append('<option value="' + city[i].code + '" selected>' + city[i].name + '</option>');
+                } else if(i == 1) {
+                    alert("하이하이!");
                 } else {
                     $('#city').append('<option value="' + city[i].code + '">' + city[i].name + '</option>');
                 } // if-else 끝
