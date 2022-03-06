@@ -17,8 +17,8 @@
         <div>
             지역 : 
             <select id="city" onchange="changeCity();">
-                <option value="02" selected>서울</option>
-                <option value="032">인천</option>
+                <!-- <option value="02" selected>서울</option>
+                <option value="032">인천</option> -->
             </select>
         </div>
 
@@ -33,6 +33,11 @@
                 <option value="">부평</option>
                 <option value="">계양</option>
             </select>
+        </div>
+
+        <div>
+            test :
+            <input type="text" id="test">
         </div>
 
         <button type="button" onclick="regist();">등록</button>
@@ -64,20 +69,90 @@
             // Jqeury 문법
             alert($("#name").val());
             alert($("#city").val());
+
+            let objTest = {};  // objTest 끝
+
+        objTest.name = $("#name").val();        // objTest의 name이라는 Key로 접근
+        objTest.city = $("#city").val();        // objTest의 city라는 Key로 접근
+
+        printConsole(objTest);
+
         } //  function regist() 끝
+
+        function loadCity() {
+
+                    // Server에서 Data를 받아왔다는 가정
+                    let city = [{
+                            code:"02", 
+                            name:"서울"
+                        }, 
+                        {
+                            code:"032", 
+                            name:"인천"
+                        }
+            ];       // 배열은 [] 사용
+
+            for(let i = 0; i < city.length; i++) {
+                if(i == 0) {
+                    $('#city').append('<option value="' + city[i].code + '" selected>' + city[i].name + '</option>');
+                } else {
+                    $('#city').append('<option value="' + city[i].code + '" selected>' + city[i].name + '</option>');
+                } // for문 끝
+            }
+
+        } // loadCity() 끝
+
+        loadCity();
+
+        function printConsole(data) {
+
+            console.log(data)
+
+        } // printConsole(data) 끝
 
         function changeCity() {
 
             // city ID를 가진 Element 값을 city 변수에 넣는다.
-            let city = document.getElementById("city").value;
+            // let city = document.getElementById("city").value;
 
             // 기본 상태는 두 지역구 모두 표시 되지 않게 한다.
-            document.getElementById("region_02").style.display = "none";
-            document.getElementById("region_032").style.display = "none";
+            // document.getElementById("region_02").style.display = "none";
+            // document.getElementById("region_032").style.display = "none";
 
             // 어떤 도시가 선택되면 해당 지역구만 표시되게 한다.
-            document.getElementById("region_"+city).style.display = "";
+            // document.getElementById("region_"+city).style.display = "";
+
+            // Jqeury 문법
+            let city = $('#city').val();
+
+            $('#regin_02').hide();
+            $('#region_032').hide();
+
+            $('#region_'+city).show();
         } // function changeCity() 끝
+        
+        // JavaScript의 변수
+        // 1) var 2) let 3) const
+        var x = 1;
+        x = x + 2;
+
+        let y = 1;
+        y = y + 2;
+
+        const z = 1;
+
+        // 숫자, 소수점 숫자, 문자, Boolean, 객체(Object), 배열 등
+        let a = 1;  // 숫자
+        a = 1.231;  // 소수점 숫자
+        a = "주니하랑"; // 문자 ('')도 가능
+        a = true;       // boolean
+        
+        let obj = {};   // 객체(Object)는 반드시 {}로 감싸줘야 한다. (Key:Value로 이뤄져 있다.)
+
+
+
+        document.getElementById("test").value = y;
+
     </script>
 </body>
 </html>
